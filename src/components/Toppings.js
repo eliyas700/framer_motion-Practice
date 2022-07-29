@@ -16,11 +16,17 @@ const Toppings = ({ addTopping, pizza }) => {
       <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map((topping) => {
+          console.log(pizza.toppings);
           let spanClass = pizza.toppings.includes(topping) ? "active" : "";
           return (
-            <li key={topping} onClick={() => addTopping(topping)}>
+            <motion.li
+              whileHover={{ scale: 1.3, color: "#f8e112", originX: 0 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              key={topping}
+              onClick={() => addTopping(topping)}
+            >
               <span className={spanClass}>{topping}</span>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
